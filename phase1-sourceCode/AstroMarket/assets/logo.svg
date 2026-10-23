@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="56" viewBox="0 0 240 56">
+  <g fill="none" stroke="#7aa7ff" stroke-width="2.2" stroke-linejoin="round">
+    <path d="M26 44 C18 36 18 22 26 12 C34 22 34 36 26 44 Z"/>
+    <path d="M26 44 C16 42 8 34 7 22 C17 23 24 31 26 44 Z"/>
+    <path d="M26 44 C36 42 44 34 45 22 C35 23 28 31 26 44 Z"/>
+    <path d="M10 46 H42"/>
+  </g>
+  <text x="58" y="27" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#ffffff">Market Prediction</text>
+  <text x="58" y="45" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#b8c7e6">Market, macro, astro + more</text>
+</svg>

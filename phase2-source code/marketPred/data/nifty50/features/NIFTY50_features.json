@@ -1,0 +1,969 @@
+{
+  "dataset_version": "c7b0ee6ea409",
+  "config_fingerprint": "4e20424fc071",
+  "market": "NIFTY50",
+  "rows": 4443,
+  "first_date": "2008-09-01",
+  "last_date": "2026-10-16",
+  "provenance": {
+    "price__ret_1": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__ret_5": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__ret_21": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__ret_63": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__ret_126": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__ret_252": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__mom_12_1": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__rv_5": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__rv_21": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__rv_63": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__log_rv_5": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__log_rv_21": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__log_rv_63": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__downside_vol_21": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__vol_ratio_5_63": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__parkinson_21": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__range_1": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__dist_high_252": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__dist_low_252": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__ma_ratio_50": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__ma_ratio_200": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__rsi_14": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__skew_63": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__jumps_63": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__volume_z_63": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "price__volume_trend_5_63": {
+      "category": "price",
+      "source": "yahoo:^NSEI",
+      "transform": "see price.compute"
+    },
+    "calendar__dow_0": {
+      "category": "calendar",
+      "source": "exchange calendar",
+      "transform": "deterministic"
+    },
+    "calendar__dow_1": {
+      "category": "calendar",
+      "source": "exchange calendar",
+      "transform": "deterministic"
+    },
+    "calendar__dow_2": {
+      "category": "calendar",
+      "source": "exchange calendar",
+      "transform": "deterministic"
+    },
+    "calendar__dow_3": {
+      "category": "calendar",
+      "source": "exchange calendar",
+      "transform": "deterministic"
+    },
+    "calendar__dow_4": {
+      "category": "calendar",
+      "source": "exchange calendar",
+      "transform": "deterministic"
+    },
+    "calendar__month_sin": {
+      "category": "calendar",
+      "source": "exchange calendar",
+      "transform": "deterministic"
+    },
+    "calendar__month_cos": {
+      "category": "calendar",
+      "source": "exchange calendar",
+      "transform": "deterministic"
+    },
+    "calendar__january": {
+      "category": "calendar",
+      "source": "exchange calendar",
+      "transform": "deterministic"
+    },
+    "calendar__nov_apr": {
+      "category": "calendar",
+      "source": "exchange calendar",
+      "transform": "deterministic"
+    },
+    "calendar__turn_of_month": {
+      "category": "calendar",
+      "source": "exchange calendar",
+      "transform": "deterministic"
+    },
+    "calendar__days_to_month_end": {
+      "category": "calendar",
+      "source": "exchange calendar",
+      "transform": "deterministic"
+    },
+    "calendar__pre_holiday": {
+      "category": "calendar",
+      "source": "exchange calendar",
+      "transform": "deterministic"
+    },
+    "calendar__post_holiday": {
+      "category": "calendar",
+      "source": "exchange calendar",
+      "transform": "deterministic"
+    },
+    "macro__y3m": {
+      "category": "macro",
+      "source": "treasury:3M",
+      "transform": "level"
+    },
+    "macro__y10": {
+      "category": "macro",
+      "source": "treasury:10Y",
+      "transform": "level"
+    },
+    "macro__slope_10y_3m": {
+      "category": "macro",
+      "source": "treasury",
+      "transform": "10Y-3M"
+    },
+    "macro__slope_10y_2y": {
+      "category": "macro",
+      "source": "treasury",
+      "transform": "10Y-2Y"
+    },
+    "macro__d21_y10": {
+      "category": "macro",
+      "source": "treasury:10Y",
+      "transform": "21-obs change"
+    },
+    "macro__d63_y3m": {
+      "category": "macro",
+      "source": "treasury:3M",
+      "transform": "63-obs change"
+    },
+    "macro__nfci": {
+      "category": "macro",
+      "source": "nfci:NFCI",
+      "transform": "level (latest vintage)"
+    },
+    "macro__anfci": {
+      "category": "macro",
+      "source": "nfci:ANFCI",
+      "transform": "level (latest vintage)"
+    },
+    "macro__d4_nfci": {
+      "category": "macro",
+      "source": "nfci:NFCI",
+      "transform": "4-week change"
+    },
+    "macro__cpi_yoy": {
+      "category": "macro",
+      "source": "bls:CPI_NSA",
+      "transform": "12m log change"
+    },
+    "macro__cpi_yoy_chg3": {
+      "category": "macro",
+      "source": "bls:CPI_NSA",
+      "transform": "3m change of yoy"
+    },
+    "macro__unrate": {
+      "category": "macro",
+      "source": "bls:UNRATE",
+      "transform": "level"
+    },
+    "macro__unrate_gap12": {
+      "category": "macro",
+      "source": "bls:UNRATE",
+      "transform": "level minus 12m min"
+    },
+    "macro__umich_ics": {
+      "category": "macro",
+      "source": "umich:ICS",
+      "transform": "level"
+    },
+    "macro__umich_chg3": {
+      "category": "macro",
+      "source": "umich:ICS",
+      "transform": "3m change"
+    },
+    "cross_asset__log_vix": {
+      "category": "cross_asset",
+      "source": "^INDIAVIX",
+      "transform": "log level"
+    },
+    "cross_asset__vix_chg5": {
+      "category": "cross_asset",
+      "source": "^INDIAVIX",
+      "transform": "5-obs log change"
+    },
+    "cross_asset__log_us_vix": {
+      "category": "cross_asset",
+      "source": "^VIX",
+      "transform": "log level"
+    },
+    "cross_asset__vix_term": {
+      "category": "cross_asset",
+      "source": "^VIX,^VIX3M",
+      "transform": "log(VIX/VIX3M)"
+    },
+    "cross_asset__vrp": {
+      "category": "cross_asset",
+      "source": "^INDIAVIX,target",
+      "transform": "implied^2 - RV21^2"
+    },
+    "cross_asset__dxy_ret21": {
+      "category": "cross_asset",
+      "source": "DX-Y.NYB",
+      "transform": "21-obs log ret"
+    },
+    "cross_asset__gold_ret21": {
+      "category": "cross_asset",
+      "source": "GC=F",
+      "transform": "21-obs log ret"
+    },
+    "cross_asset__oil_ret21": {
+      "category": "cross_asset",
+      "source": "CL=F",
+      "transform": "21-obs log ret"
+    },
+    "cross_asset__copper_gold_chg63": {
+      "category": "cross_asset",
+      "source": "HG=F,GC=F",
+      "transform": "63-obs change in log(copper/gold)"
+    },
+    "cross_asset__credit_hyg_lqd_chg21": {
+      "category": "cross_asset",
+      "source": "HYG,LQD",
+      "transform": "21-obs change in log(HYG/LQD)"
+    },
+    "cross_asset__size_rel63": {
+      "category": "cross_asset",
+      "source": "^RUT,target",
+      "transform": "63d log ret of Russell 2000 minus target index"
+    },
+    "news__epu_log_ma7": {
+      "category": "news",
+      "source": "epu:daily",
+      "transform": "log 7-day mean"
+    },
+    "news__epu_ma7_vs_ma365": {
+      "category": "news",
+      "source": "epu:daily",
+      "transform": "log(ma7/ma365)"
+    },
+    "news__gpr_log_ma7": {
+      "category": "news",
+      "source": "gpr:GPRD",
+      "transform": "log 7-day mean"
+    },
+    "news__gpr_ma7_vs_ma365": {
+      "category": "news",
+      "source": "gpr:GPRD",
+      "transform": "log(ma7/ma365)"
+    },
+    "news__gpr_act_log_ma7": {
+      "category": "news",
+      "source": "gpr:GPRD_ACT",
+      "transform": "log 7-day mean"
+    },
+    "news__gpr_threat_log_ma7": {
+      "category": "news",
+      "source": "gpr:GPRD_THREAT",
+      "transform": "log 7-day mean"
+    },
+    "weather__cloud_anom": {
+      "category": "weather",
+      "source": "nasa_power:CLOUD_AMT",
+      "transform": "minus prior same-month mean"
+    },
+    "weather__clearness_anom": {
+      "category": "weather",
+      "source": "nasa_power:ALLSKY_KT",
+      "transform": "minus prior same-month mean"
+    },
+    "weather__temp_anom": {
+      "category": "weather",
+      "source": "nasa_power:T2M",
+      "transform": "minus prior same-month mean"
+    },
+    "weather__log_precip": {
+      "category": "weather",
+      "source": "nasa_power:PRECTOTCORR",
+      "transform": "log1p"
+    },
+    "weather__cloud_anom_ma5": {
+      "category": "weather",
+      "source": "nasa_power:CLOUD_AMT",
+      "transform": "5-day mean anomaly"
+    },
+    "astro__moon_illum": {
+      "category": "astro",
+      "source": "PyEphem",
+      "transform": "deterministic ephemeris"
+    },
+    "astro__moon_phase_sin": {
+      "category": "astro",
+      "source": "PyEphem",
+      "transform": "deterministic ephemeris"
+    },
+    "astro__moon_phase_cos": {
+      "category": "astro",
+      "source": "PyEphem",
+      "transform": "deterministic ephemeris"
+    },
+    "astro__near_new_moon": {
+      "category": "astro",
+      "source": "PyEphem",
+      "transform": "deterministic ephemeris"
+    },
+    "astro__near_full_moon": {
+      "category": "astro",
+      "source": "PyEphem",
+      "transform": "deterministic ephemeris"
+    },
+    "astro__mercury_retrograde": {
+      "category": "astro",
+      "source": "PyEphem",
+      "transform": "deterministic ephemeris"
+    },
+    "astro__eclipse_window": {
+      "category": "astro",
+      "source": "PyEphem",
+      "transform": "deterministic ephemeris"
+    },
+    "astro__days_to_eclipse": {
+      "category": "astro",
+      "source": "PyEphem",
+      "transform": "deterministic ephemeris"
+    },
+    "astro__jup_sat_sin": {
+      "category": "astro",
+      "source": "PyEphem",
+      "transform": "deterministic ephemeris"
+    },
+    "astro__jup_sat_cos": {
+      "category": "astro",
+      "source": "PyEphem",
+      "transform": "deterministic ephemeris"
+    },
+    "astro__hard_aspects": {
+      "category": "astro",
+      "source": "PyEphem",
+      "transform": "deterministic ephemeris"
+    }
+  },
+  "coverage": {
+    "price__ret_1": {
+      "category": "price",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "price__ret_5": {
+      "category": "price",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "price__ret_21": {
+      "category": "price",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "price__ret_63": {
+      "category": "price",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "price__ret_126": {
+      "category": "price",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "price__ret_252": {
+      "category": "price",
+      "first_valid": "2008-09-22",
+      "last_valid": "2026-10-16",
+      "coverage": 0.996848975917173
+    },
+    "price__mom_12_1": {
+      "category": "price",
+      "first_valid": "2008-09-22",
+      "last_valid": "2026-10-16",
+      "coverage": 0.996848975917173
+    },
+    "price__rv_5": {
+      "category": "price",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "price__rv_21": {
+      "category": "price",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "price__rv_63": {
+      "category": "price",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "price__log_rv_5": {
+      "category": "price",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "price__log_rv_21": {
+      "category": "price",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "price__log_rv_63": {
+      "category": "price",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "price__downside_vol_21": {
+      "category": "price",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "price__vol_ratio_5_63": {
+      "category": "price",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "price__parkinson_21": {
+      "category": "price",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "price__range_1": {
+      "category": "price",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "price__dist_high_252": {
+      "category": "price",
+      "first_valid": "2008-09-19",
+      "last_valid": "2026-10-16",
+      "coverage": 0.9970740490659464
+    },
+    "price__dist_low_252": {
+      "category": "price",
+      "first_valid": "2008-09-19",
+      "last_valid": "2026-10-16",
+      "coverage": 0.9970740490659464
+    },
+    "price__ma_ratio_50": {
+      "category": "price",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "price__ma_ratio_200": {
+      "category": "price",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "price__rsi_14": {
+      "category": "price",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "price__skew_63": {
+      "category": "price",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "price__jumps_63": {
+      "category": "price",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "price__volume_z_63": {
+      "category": "price",
+      "first_valid": "2013-03-15",
+      "last_valid": "2026-10-15",
+      "coverage": 0.7445419761422463
+    },
+    "price__volume_trend_5_63": {
+      "category": "price",
+      "first_valid": "2013-03-15",
+      "last_valid": "2026-10-15",
+      "coverage": 0.7220346612649111
+    },
+    "calendar__dow_0": {
+      "category": "calendar",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "calendar__dow_1": {
+      "category": "calendar",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "calendar__dow_2": {
+      "category": "calendar",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "calendar__dow_3": {
+      "category": "calendar",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "calendar__dow_4": {
+      "category": "calendar",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "calendar__month_sin": {
+      "category": "calendar",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "calendar__month_cos": {
+      "category": "calendar",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "calendar__january": {
+      "category": "calendar",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "calendar__nov_apr": {
+      "category": "calendar",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "calendar__turn_of_month": {
+      "category": "calendar",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "calendar__days_to_month_end": {
+      "category": "calendar",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "calendar__pre_holiday": {
+      "category": "calendar",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "calendar__post_holiday": {
+      "category": "calendar",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "macro__y3m": {
+      "category": "macro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "macro__y10": {
+      "category": "macro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "macro__slope_10y_3m": {
+      "category": "macro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "macro__slope_10y_2y": {
+      "category": "macro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "macro__d21_y10": {
+      "category": "macro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "macro__d63_y3m": {
+      "category": "macro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "macro__nfci": {
+      "category": "macro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-05-15",
+      "coverage": 0.9761422462300248
+    },
+    "macro__anfci": {
+      "category": "macro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-05-15",
+      "coverage": 0.9761422462300248
+    },
+    "macro__d4_nfci": {
+      "category": "macro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-05-15",
+      "coverage": 0.9761422462300248
+    },
+    "macro__cpi_yoy": {
+      "category": "macro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 0.9993247805536799
+    },
+    "macro__cpi_yoy_chg3": {
+      "category": "macro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 0.9993247805536799
+    },
+    "macro__unrate": {
+      "category": "macro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 0.996173756470853
+    },
+    "macro__unrate_gap12": {
+      "category": "macro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 0.996173756470853
+    },
+    "macro__umich_ics": {
+      "category": "macro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "macro__umich_chg3": {
+      "category": "macro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "cross_asset__log_vix": {
+      "category": "cross_asset",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "cross_asset__vix_chg5": {
+      "category": "cross_asset",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "cross_asset__log_us_vix": {
+      "category": "cross_asset",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "cross_asset__vix_term": {
+      "category": "cross_asset",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "cross_asset__vrp": {
+      "category": "cross_asset",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "cross_asset__dxy_ret21": {
+      "category": "cross_asset",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "cross_asset__gold_ret21": {
+      "category": "cross_asset",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "cross_asset__oil_ret21": {
+      "category": "cross_asset",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "cross_asset__copper_gold_chg63": {
+      "category": "cross_asset",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "cross_asset__credit_hyg_lqd_chg21": {
+      "category": "cross_asset",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "cross_asset__size_rel63": {
+      "category": "cross_asset",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "news__epu_log_ma7": {
+      "category": "news",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "news__epu_ma7_vs_ma365": {
+      "category": "news",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "news__gpr_log_ma7": {
+      "category": "news",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "news__gpr_ma7_vs_ma365": {
+      "category": "news",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "news__gpr_act_log_ma7": {
+      "category": "news",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "news__gpr_threat_log_ma7": {
+      "category": "news",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "weather__cloud_anom": {
+      "category": "weather",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-08-07",
+      "coverage": 0.9891964888588791
+    },
+    "weather__clearness_anom": {
+      "category": "weather",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-08-07",
+      "coverage": 0.9891964888588791
+    },
+    "weather__temp_anom": {
+      "category": "weather",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "weather__log_precip": {
+      "category": "weather",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "weather__cloud_anom_ma5": {
+      "category": "weather",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-08-07",
+      "coverage": 0.9891964888588791
+    },
+    "astro__moon_illum": {
+      "category": "astro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "astro__moon_phase_sin": {
+      "category": "astro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "astro__moon_phase_cos": {
+      "category": "astro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "astro__near_new_moon": {
+      "category": "astro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "astro__near_full_moon": {
+      "category": "astro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "astro__mercury_retrograde": {
+      "category": "astro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "astro__eclipse_window": {
+      "category": "astro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "astro__days_to_eclipse": {
+      "category": "astro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "astro__jup_sat_sin": {
+      "category": "astro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "astro__jup_sat_cos": {
+      "category": "astro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    },
+    "astro__hard_aspects": {
+      "category": "astro",
+      "first_valid": "2008-09-01",
+      "last_valid": "2026-10-16",
+      "coverage": 1.0
+    }
+  }
+}

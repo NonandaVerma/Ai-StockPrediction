@@ -1,0 +1,177 @@
+{
+  "created_utc": "2026-10-16T12:34:21+00:00",
+  "rule": "category survives if Holm-adjusted DM p < alpha and mean loss improves, for the task's primary ablation model (lowest dev loss on price-only)",
+  "tasks": {
+    "direction_1": {
+      "kind": "binary",
+      "primary_ablation_model": "logit",
+      "surviving_categories": [],
+      "combined_feature_set": [
+        "price"
+      ],
+      "combined_dev_loss_biased": 0.6922403763233934,
+      "best_dev_model": "climatology",
+      "best_dev_feature_set": "price",
+      "best_dev_loss": 0.6906306916432533,
+      "loss_metric": "log_loss",
+      "reference": "climatology"
+    },
+    "direction_5": {
+      "kind": "binary",
+      "primary_ablation_model": "logit",
+      "surviving_categories": [],
+      "combined_feature_set": [
+        "price"
+      ],
+      "combined_dev_loss_biased": 0.6915325429282045,
+      "best_dev_model": "climatology",
+      "best_dev_feature_set": "price",
+      "best_dev_loss": 0.6827375525129938,
+      "loss_metric": "log_loss",
+      "reference": "climatology"
+    },
+    "direction_20": {
+      "kind": "binary",
+      "primary_ablation_model": "logit",
+      "surviving_categories": [],
+      "combined_feature_set": [
+        "price"
+      ],
+      "combined_dev_loss_biased": 0.6777909121622304,
+      "best_dev_model": "climatology",
+      "best_dev_feature_set": "price",
+      "best_dev_loss": 0.660428546612608,
+      "loss_metric": "log_loss",
+      "reference": "climatology"
+    },
+    "return_1": {
+      "kind": "regression",
+      "primary_ablation_model": "ridge",
+      "surviving_categories": [],
+      "combined_feature_set": [
+        "price"
+      ],
+      "combined_dev_loss_biased": 0.01118991827638919,
+      "best_dev_model": "hist_mean",
+      "best_dev_feature_set": "price",
+      "best_dev_loss": 0.011181751972970798,
+      "loss_metric": "rmse",
+      "reference": "hist_mean"
+    },
+    "return_5": {
+      "kind": "regression",
+      "primary_ablation_model": "ridge",
+      "surviving_categories": [],
+      "combined_feature_set": [
+        "price"
+      ],
+      "combined_dev_loss_biased": 0.02492057228818532,
+      "best_dev_model": "enet",
+      "best_dev_feature_set": "all",
+      "best_dev_loss": 0.024795149815430198,
+      "loss_metric": "rmse",
+      "reference": "hist_mean"
+    },
+    "return_20": {
+      "kind": "regression",
+      "primary_ablation_model": "ridge",
+      "surviving_categories": [],
+      "combined_feature_set": [
+        "price"
+      ],
+      "combined_dev_loss_biased": 0.05316151896944528,
+      "best_dev_model": "ridge",
+      "best_dev_feature_set": "all",
+      "best_dev_loss": 0.052289143802545304,
+      "loss_metric": "rmse",
+      "reference": "hist_mean"
+    },
+    "volatility_5": {
+      "kind": "volatility",
+      "primary_ablation_model": "ridge",
+      "surviving_categories": [],
+      "combined_feature_set": [
+        "price"
+      ],
+      "combined_dev_loss_biased": 0.16292470101878634,
+      "best_dev_model": "ridge",
+      "best_dev_feature_set": "price",
+      "best_dev_loss": 0.16292470101878634,
+      "loss_metric": "mse_log",
+      "reference": "rw_vol"
+    },
+    "volatility_20": {
+      "kind": "volatility",
+      "primary_ablation_model": "ridge",
+      "surviving_categories": [
+        "weather"
+      ],
+      "combined_feature_set": [
+        "price",
+        "weather"
+      ],
+      "combined_dev_loss_biased": 0.11182983002415998,
+      "best_dev_model": "har",
+      "best_dev_feature_set": "price",
+      "best_dev_loss": 0.11300834556302912,
+      "loss_metric": "mse_log",
+      "reference": "rw_vol"
+    },
+    "downside_5": {
+      "kind": "binary",
+      "primary_ablation_model": "logit",
+      "surviving_categories": [],
+      "combined_feature_set": [
+        "price"
+      ],
+      "combined_dev_loss_biased": 0.4082583168299706,
+      "best_dev_model": "logit",
+      "best_dev_feature_set": "price",
+      "best_dev_loss": 0.4082583168299706,
+      "loss_metric": "log_loss",
+      "reference": "climatology"
+    },
+    "downside_20": {
+      "kind": "binary",
+      "primary_ablation_model": "logit",
+      "surviving_categories": [],
+      "combined_feature_set": [
+        "price"
+      ],
+      "combined_dev_loss_biased": 0.30951601622965647,
+      "best_dev_model": "climatology",
+      "best_dev_feature_set": "price",
+      "best_dev_loss": 0.29528746056589517,
+      "loss_metric": "log_loss",
+      "reference": "climatology"
+    },
+    "large_move_1": {
+      "kind": "binary",
+      "primary_ablation_model": "logit",
+      "surviving_categories": [],
+      "combined_feature_set": [
+        "price"
+      ],
+      "combined_dev_loss_biased": 0.15356941477872507,
+      "best_dev_model": "logit",
+      "best_dev_feature_set": "price",
+      "best_dev_loss": 0.15356941477872507,
+      "loss_metric": "log_loss",
+      "reference": "climatology"
+    },
+    "regime_20": {
+      "kind": "multiclass",
+      "primary_ablation_model": "logit",
+      "surviving_categories": [],
+      "combined_feature_set": [
+        "price"
+      ],
+      "combined_dev_loss_biased": 1.2056945821396514,
+      "best_dev_model": "logit",
+      "best_dev_feature_set": "all",
+      "best_dev_loss": 1.1957323008907552,
+      "loss_metric": "log_loss",
+      "reference": "climatology"
+    }
+  }
+}

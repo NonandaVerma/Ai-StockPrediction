@@ -1,0 +1,132 @@
+{
+  "created_utc": "2026-10-16T11:38:10+00:00",
+  "rule": "category survives if Holm-adjusted DM p < alpha and mean loss improves, for the task's primary ablation model (lowest dev loss on price-only)",
+  "tasks": {
+    "direction_1": {
+      "kind": "binary",
+      "primary_ablation_model": "logit",
+      "surviving_categories": [],
+      "combined_feature_set": [
+        "price"
+      ],
+      "combined_dev_loss_biased": 0.6904162118063207,
+      "best_dev_model": "logit",
+      "best_dev_feature_set": "price",
+      "best_dev_loss": 0.6904162118063207,
+      "loss_metric": "log_loss",
+      "reference": "climatology"
+    },
+    "direction_5": {
+      "kind": "binary",
+      "primary_ablation_model": "lgbm",
+      "surviving_categories": [],
+      "combined_feature_set": [
+        "price"
+      ],
+      "combined_dev_loss_biased": 0.6875444829265938,
+      "best_dev_model": "climatology",
+      "best_dev_feature_set": "price",
+      "best_dev_loss": 0.6850416006593393,
+      "loss_metric": "log_loss",
+      "reference": "climatology"
+    },
+    "return_1": {
+      "kind": "regression",
+      "primary_ablation_model": "ridge",
+      "surviving_categories": [],
+      "combined_feature_set": [
+        "price"
+      ],
+      "combined_dev_loss_biased": 0.012553127647279698,
+      "best_dev_model": "ridge",
+      "best_dev_feature_set": "price",
+      "best_dev_loss": 0.012553127647279698,
+      "loss_metric": "rmse",
+      "reference": "hist_mean"
+    },
+    "return_5": {
+      "kind": "regression",
+      "primary_ablation_model": "ridge",
+      "surviving_categories": [],
+      "combined_feature_set": [
+        "price"
+      ],
+      "combined_dev_loss_biased": 0.02553094462416222,
+      "best_dev_model": "hist_mean",
+      "best_dev_feature_set": "price",
+      "best_dev_loss": 0.025387960755130595,
+      "loss_metric": "rmse",
+      "reference": "hist_mean"
+    },
+    "volatility_5": {
+      "kind": "volatility",
+      "primary_ablation_model": "ridge",
+      "surviving_categories": [],
+      "combined_feature_set": [
+        "price"
+      ],
+      "combined_dev_loss_biased": 0.18227489416656292,
+      "best_dev_model": "lgbm",
+      "best_dev_feature_set": "price",
+      "best_dev_loss": 0.1823938835005189,
+      "loss_metric": "mse_log",
+      "reference": "rw_vol"
+    },
+    "downside_5": {
+      "kind": "binary",
+      "primary_ablation_model": "logit",
+      "surviving_categories": [],
+      "combined_feature_set": [
+        "price"
+      ],
+      "combined_dev_loss_biased": 0.4063352753705247,
+      "best_dev_model": "logit",
+      "best_dev_feature_set": "all",
+      "best_dev_loss": 0.4059912834274268,
+      "loss_metric": "log_loss",
+      "reference": "climatology"
+    },
+    "downside_20": {
+      "kind": "binary",
+      "primary_ablation_model": "logit",
+      "surviving_categories": [],
+      "combined_feature_set": [
+        "price"
+      ],
+      "combined_dev_loss_biased": 0.34242573693994005,
+      "best_dev_model": "logit",
+      "best_dev_feature_set": "all",
+      "best_dev_loss": 0.34173579514454383,
+      "loss_metric": "log_loss",
+      "reference": "climatology"
+    },
+    "large_move_1": {
+      "kind": "binary",
+      "primary_ablation_model": "logit",
+      "surviving_categories": [],
+      "combined_feature_set": [
+        "price"
+      ],
+      "combined_dev_loss_biased": 0.22073665741701048,
+      "best_dev_model": "logit",
+      "best_dev_feature_set": "price",
+      "best_dev_loss": 0.22073665741701048,
+      "loss_metric": "log_loss",
+      "reference": "climatology"
+    },
+    "regime_20": {
+      "kind": "multiclass",
+      "primary_ablation_model": "logit",
+      "surviving_categories": [],
+      "combined_feature_set": [
+        "price"
+      ],
+      "combined_dev_loss_biased": 1.178019625870512,
+      "best_dev_model": "logit",
+      "best_dev_feature_set": "price",
+      "best_dev_loss": 1.178019625870512,
+      "loss_metric": "log_loss",
+      "reference": "climatology"
+    }
+  }
+}

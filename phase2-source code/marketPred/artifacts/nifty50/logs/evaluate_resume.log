@@ -1,0 +1,67 @@
+18:01:08 INFO marketpred.experiments: running jobs total=128 todo=0 n_jobs=5
+18:01:58 INFO marketpred.experiments: running jobs total=264 todo=8 n_jobs=5
+run directory: artifacts\nifty50\runs\20261016T121653Z_c7b0ee6ea409
+{
+  "direction_1": {
+    "best_dev_model": "climatology",
+    "best_dev_feature_set": "price",
+    "surviving_categories": []
+  },
+  "direction_5": {
+    "best_dev_model": "climatology",
+    "best_dev_feature_set": "price",
+    "surviving_categories": []
+  },
+  "direction_20": {
+    "best_dev_model": "climatology",
+    "best_dev_feature_set": "price",
+    "surviving_categories": []
+  },
+  "return_1": {
+    "best_dev_model": "hist_mean",
+    "best_dev_feature_set": "price",
+    "surviving_categories": []
+  },
+  "return_5": {
+    "best_dev_model": "enet",
+    "best_dev_feature_set": "all",
+    "surviving_categories": []
+  },
+  "return_20": {
+    "best_dev_model": "ridge",
+    "best_dev_feature_set": "all",
+    "surviving_categories": []
+  },
+  "volatility_5": {
+    "best_dev_model": "ridge",
+    "best_dev_feature_set": "price",
+    "surviving_categories": []
+  },
+  "volatility_20": {
+    "best_dev_model": "har",
+    "best_dev_feature_set": "price",
+    "surviving_categories": [
+      "weather"
+    ]
+  },
+  "downside_5": {
+    "best_dev_model": "logit",
+    "best_dev_feature_set": "price",
+    "surviving_categories": []
+  },
+  "downside_20": {
+    "best_dev_model": "climatology",
+    "best_dev_feature_set": "price",
+    "surviving_categories": []
+  },
+  "large_move_1": {
+    "best_dev_model": "logit",
+    "best_dev_feature_set": "price",
+    "surviving_categories": []
+  },
+  "regime_20": {
+    "best_dev_model": "logit",
+    "best_dev_feature_set": "all",
+    "surviving_categories": []
+  }
+}

@@ -1,0 +1,16 @@
+# Dashboard theme: light content area, dark navy sidebar (see src/ui_components.py for card styles).
+[theme]
+base = "light"
+primaryColor = "#2563eb"
+backgroundColor = "#f4f7fc"
+secondaryBackgroundColor = "#e9eef7"
+textColor = "#0f172a"
+borderColor = "#dbe3ef"
+baseRadius = "0.6rem"
+
+[theme.sidebar]
+backgroundColor = "#13254a"
+secondaryBackgroundColor = "#1c3366"
+textColor = "#e5ecfa"
+primaryColor = "#7aa7ff"
+borderColor = "#2a4277"

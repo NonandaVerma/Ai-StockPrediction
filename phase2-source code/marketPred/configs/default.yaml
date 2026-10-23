@@ -1,0 +1,169 @@
+# Default configuration: S&P 500 index, daily decisions at the NYSE close.
+# Every timing assumption that affects leakage is explicit here and documented in docs/DATA_SOURCES.md.
+
+project:
+  seed: 42
+  data_dir: data            # overridable with MARKETPRED_DATA_DIR
+  artifacts_dir: artifacts  # overridable with MARKETPRED_ARTIFACTS_DIR
+
+market:
+  id: SPX
+  name: S&P 500 Index (price return)
+  ticker: "^GSPC"
+  calendar: NYSE            # pandas_market_calendars name; supplies DST-aware session closes and early closes
+  timezone: America/New_York
+  currency: USD
+  start_date: "1990-01-01"
+  weather_location: {name: New York City, lat: 40.71, lon: -74.01}
+  cftc_contract_code: "13874A"   # E-mini S&P 500 (legacy futures-only report)
+
+# Point-in-time rules. available_at = (period_end(obs_date) + release_lag_days) at release_time in release_tz.
+# period: D (daily), W (weekly, obs_date already the period end), M (monthly; obs_date = first day of month).
+# max_staleness_days: older values are treated as missing rather than forward-filled forever.
+sources:
+  yahoo_cross_asset:
+    enabled: true
+    tickers:
+      "^VIX":     {release_time: "16:15", release_tz: America/New_York, max_staleness_days: 5}
+      "^VIX3M":   {release_time: "16:15", release_tz: America/New_York, max_staleness_days: 5}
+      "DX-Y.NYB": {release_time: "17:00", release_tz: America/New_York, max_staleness_days: 5}
+      "GC=F":     {release_time: "17:00", release_tz: America/New_York, max_staleness_days: 5}
+      "CL=F":     {release_time: "17:00", release_tz: America/New_York, max_staleness_days: 5}
+      "HG=F":     {release_time: "17:00", release_tz: America/New_York, max_staleness_days: 5}
+      "HYG":      {release_time: "16:00", release_tz: America/New_York, max_staleness_days: 5}
+      "LQD":      {release_time: "16:00", release_tz: America/New_York, max_staleness_days: 5}
+      "^RUT":     {release_time: "16:00", release_tz: America/New_York, max_staleness_days: 5}
+  treasury:
+    enabled: true
+    start_year: 1990
+    release_time: "18:00"
+    release_tz: America/New_York
+    max_staleness_days: 7
+  nfci:
+    enabled: true
+    period: W
+    release_lag_days: 5        # week ending Friday -> published the following Wednesday 08:30 ET
+    release_time: "08:30"
+    release_tz: America/New_York
+    max_staleness_days: 21
+    revised: true              # only the latest vintage is downloadable keylessly (revision leakage risk)
+  umich:
+    enabled: true
+    period: M
+    release_lag_days: 1        # final monthly reading is published near month end
+    release_time: "10:00"
+    release_tz: America/New_York
+    max_staleness_days: 70
+  bls:
+    enabled: true
+    start_year: 1988
+    series:
+      CPI_NSA: {id: CUUR0000SA0, release_lag_days: 35, revised: false}   # NSA CPI is not revised
+      UNRATE:  {id: LNS14000000, release_lag_days: 55, revised: true}    # 55d covers 2013 & 2025 shutdown delays
+    period: M
+    release_time: "08:30"
+    release_tz: America/New_York
+    max_staleness_days: 120
+  shiller:
+    enabled: true
+    period: M
+    release_lag_days: 120      # conservative: index earnings are reported with a lag of roughly one quarter
+    release_time: "00:00"
+    release_tz: America/New_York
+    max_staleness_days: 200
+    revised: true
+  epu:
+    enabled: true
+    period: D
+    release_lag_days: 2
+    release_time: "00:00"
+    release_tz: America/New_York
+    max_staleness_days: 10
+  gpr:
+    enabled: true
+    period: D
+    release_lag_days: 7        # file is refreshed roughly weekly
+    release_time: "00:00"
+    release_tz: America/New_York
+    max_staleness_days: 21
+  cftc:
+    enabled: true
+    period: D
+    release_lag_days: 6        # Tuesday positions, published Friday 15:30 ET; use following Monday (holiday buffer)
+    release_time: "09:00"
+    release_tz: America/New_York
+    max_staleness_days: 21
+  nasa_power:
+    enabled: true
+    start: "1984-01-01"
+    parameters: [ALLSKY_KT, CLOUD_AMT, T2M, PRECTOTCORR]
+    period: D
+    release_lag_days: 1
+    release_time: "00:00"
+    release_tz: America/New_York
+    max_staleness_days: 10
+  fred:
+    enabled: false             # requires FRED_API_KEY; enables ALFRED vintages when available
+    series: [BAA10Y, T10YIE]
+
+http:
+  timeout_s: 90
+  max_retries: 5
+  backoff_factor: 1.5
+  min_interval_s: 1.0          # per-host rate limit
+  cache_ttl_hours: 20
+
+features:
+  # Category order defines ablation order. "price" is the baseline category.
+  categories: [price, calendar, macro, valuation, cross_asset, news, weather, behavior, astro]
+  winsorize_quantile: 0.005    # fitted on training data only (inside model pipelines)
+
+targets:
+  horizons: [1, 5, 20]
+  downside: {5: -0.02, 20: -0.05}   # P(log return over h days < threshold)
+  large_move: {horizon: 1, abs_threshold: 0.02}
+  regime: {horizon: 20, high_vol_annualized: 0.25, bull_return: 0.02, bear_return: -0.02}
+  vol_horizons: [5, 20]
+
+validation:
+  dev_start: "2000-01-01"      # first out-of-sample date of the development walk-forward
+  holdout_start: "2021-01-01"  # untouched final test period (evaluated once, after selection)
+  retrain_every_days: 252      # expanding window, refit every N trading days
+  embargo_days: 5              # extra gap after purging overlapping labels
+  min_train_obs: 1500
+  calibration_fraction: 0.2    # tail of the training window used for Platt calibration (purged)
+
+compute:
+  n_jobs: 5                    # parallel experiment processes (each model uses n_jobs threads from its params)
+
+evaluation:
+  bootstrap_reps: 500
+  bootstrap_block: 20
+  alpha: 0.05
+  cost_bps_per_turnover: 5.0
+  slippage_bps: 2.0
+
+models:
+  classification: [climatology, logit, lgbm, xgb, rf]
+  regression: [hist_mean, ar1, ridge, enet, lgbm, xgb, rf]
+  volatility: [rw_vol, har, garch, ridge, lgbm]
+  regime: [climatology, logit, lgbm]
+  ablation_classification: [logit, lgbm]
+  ablation_regression: [ridge, lgbm]
+  ablation_volatility: [ridge, lgbm]
+  params:
+    logit: {C: 0.05, max_iter: 2000}
+    ridge: {alpha: 100.0}
+    enet: {alpha: 0.001, l1_ratio: 0.5, max_iter: 5000}
+    lgbm: {n_estimators: 300, learning_rate: 0.02, num_leaves: 15, min_child_samples: 100,
+           subsample: 0.8, subsample_freq: 1, colsample_bytree: 0.7, reg_lambda: 5.0, verbose: -1, n_jobs: 2}
+    xgb: {n_estimators: 300, learning_rate: 0.02, max_depth: 3, min_child_weight: 50,
+          subsample: 0.8, colsample_bytree: 0.7, reg_lambda: 5.0, n_jobs: 2}
+    rf: {n_estimators: 300, min_samples_leaf: 100, max_features: 0.3, n_jobs: 2}
+  calibrate: [lgbm, xgb, rf]   # Platt scaling on a purged tail of each training window
+  # In-window tuning: each candidate is fit on the early part of the training window and scored on the
+  # purged tail (same split as calibration); the winner is refit on the full window. Never sees test data.
+  tuning:
+    logit: {C: [0.001, 0.01, 0.1, 1.0]}
+    ridge: {alpha: [10.0, 1000.0, 10000.0, 100000.0]}
+    enet: {alpha: [0.0001, 0.001, 0.01]}

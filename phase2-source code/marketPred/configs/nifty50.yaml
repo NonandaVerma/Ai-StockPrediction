@@ -1,0 +1,41 @@
+# Extension market: NIFTY 50 (NSE), merged over configs/default.yaml.
+#   python -m marketpred --config configs/nifty50.yaml ingest
+#   python -m marketpred --config configs/nifty50.yaml build-features
+#   python -m marketpred --config configs/nifty50.yaml evaluate
+# Separate data/artifact roots so that market-specific sources (e.g. weather location) never mix.
+# US-published series (Treasury, VIX, ...) are usable at the NSE close (15:30 IST) only if they were
+# published before it - normally the previous US session - which the as-of join enforces automatically.
+
+project:
+  data_dir: data/nifty50
+  artifacts_dir: artifacts/nifty50
+
+market:
+  id: NIFTY50
+  name: NIFTY 50 Index (price return)
+  ticker: "^NSEI"
+  calendar: NSE
+  timezone: Asia/Kolkata
+  currency: INR
+  start_date: "2008-09-01"          # Yahoo history starts 2007-09; first year used as lookback
+  weather_location: {name: Mumbai, lat: 19.08, lon: 72.88}
+  cftc_contract_code: null          # no CFTC-reported NIFTY contract
+  vol_index: "^INDIAVIX"            # local implied-vol index (US VIX is kept as a global-risk feature)
+
+sources:
+  yahoo_cross_asset:
+    tickers:
+      "^INDIAVIX": {release_time: "15:30", release_tz: Asia/Kolkata, max_staleness_days: 5}
+  cftc:
+    enabled: false
+
+features:
+  # behavior (CFTC) is unavailable for India; FII/DII flow data (NSE) would be the natural substitute.
+  # valuation is excluded: the only keyless valuation source (Shiller) covers US earnings.
+  # macro is US-only (global conditions); Indian macro (MOSPI/RBI) connectors are future work.
+  categories: [price, calendar, macro, cross_asset, news, weather, astro]
+
+validation:
+  dev_start: "2015-01-01"
+  holdout_start: "2022-01-01"
+  min_train_obs: 1200

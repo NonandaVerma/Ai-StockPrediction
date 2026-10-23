@@ -1,0 +1,423 @@
+{
+  "created_utc": "2026-10-16T12:16:53+00:00",
+  "dataset_version": "c7b0ee6ea409",
+  "config_fingerprint": "a0bf132729a6",
+  "config": {
+    "project": {
+      "seed": 42,
+      "data_dir": "data/nifty50",
+      "artifacts_dir": "artifacts/nifty50"
+    },
+    "market": {
+      "id": "NIFTY50",
+      "name": "NIFTY 50 Index (price return)",
+      "ticker": "^NSEI",
+      "calendar": "NSE",
+      "timezone": "Asia/Kolkata",
+      "currency": "INR",
+      "start_date": "2008-09-01",
+      "weather_location": {
+        "name": "Mumbai",
+        "lat": 19.08,
+        "lon": 72.88
+      },
+      "cftc_contract_code": null,
+      "vol_index": "^INDIAVIX"
+    },
+    "sources": {
+      "yahoo_cross_asset": {
+        "enabled": true,
+        "tickers": {
+          "^VIX": {
+            "release_time": "16:15",
+            "release_tz": "America/New_York",
+            "max_staleness_days": 5
+          },
+          "^VIX3M": {
+            "release_time": "16:15",
+            "release_tz": "America/New_York",
+            "max_staleness_days": 5
+          },
+          "DX-Y.NYB": {
+            "release_time": "17:00",
+            "release_tz": "America/New_York",
+            "max_staleness_days": 5
+          },
+          "GC=F": {
+            "release_time": "17:00",
+            "release_tz": "America/New_York",
+            "max_staleness_days": 5
+          },
+          "CL=F": {
+            "release_time": "17:00",
+            "release_tz": "America/New_York",
+            "max_staleness_days": 5
+          },
+          "HG=F": {
+            "release_time": "17:00",
+            "release_tz": "America/New_York",
+            "max_staleness_days": 5
+          },
+          "HYG": {
+            "release_time": "16:00",
+            "release_tz": "America/New_York",
+            "max_staleness_days": 5
+          },
+          "LQD": {
+            "release_time": "16:00",
+            "release_tz": "America/New_York",
+            "max_staleness_days": 5
+          },
+          "^RUT": {
+            "release_time": "16:00",
+            "release_tz": "America/New_York",
+            "max_staleness_days": 5
+          },
+          "^INDIAVIX": {
+            "max_staleness_days": 5,
+            "release_time": "15:30",
+            "release_tz": "Asia/Kolkata"
+          }
+        }
+      },
+      "treasury": {
+        "enabled": true,
+        "start_year": 1990,
+        "release_time": "18:00",
+        "release_tz": "America/New_York",
+        "max_staleness_days": 7
+      },
+      "nfci": {
+        "enabled": true,
+        "period": "W",
+        "release_lag_days": 5,
+        "release_time": "08:30",
+        "release_tz": "America/New_York",
+        "max_staleness_days": 21,
+        "revised": true
+      },
+      "umich": {
+        "enabled": true,
+        "period": "M",
+        "release_lag_days": 1,
+        "release_time": "10:00",
+        "release_tz": "America/New_York",
+        "max_staleness_days": 70
+      },
+      "bls": {
+        "enabled": true,
+        "start_year": 1988,
+        "series": {
+          "CPI_NSA": {
+            "id": "CUUR0000SA0",
+            "release_lag_days": 35,
+            "revised": false
+          },
+          "UNRATE": {
+            "id": "LNS14000000",
+            "release_lag_days": 55,
+            "revised": true
+          }
+        },
+        "period": "M",
+        "release_time": "08:30",
+        "release_tz": "America/New_York",
+        "max_staleness_days": 120
+      },
+      "shiller": {
+        "enabled": true,
+        "period": "M",
+        "release_lag_days": 120,
+        "release_time": "00:00",
+        "release_tz": "America/New_York",
+        "max_staleness_days": 200,
+        "revised": true
+      },
+      "epu": {
+        "enabled": true,
+        "period": "D",
+        "release_lag_days": 2,
+        "release_time": "00:00",
+        "release_tz": "America/New_York",
+        "max_staleness_days": 10
+      },
+      "gpr": {
+        "enabled": true,
+        "period": "D",
+        "release_lag_days": 7,
+        "release_time": "00:00",
+        "release_tz": "America/New_York",
+        "max_staleness_days": 21
+      },
+      "cftc": {
+        "enabled": false,
+        "period": "D",
+        "release_lag_days": 6,
+        "release_time": "09:00",
+        "release_tz": "America/New_York",
+        "max_staleness_days": 21
+      },
+      "nasa_power": {
+        "enabled": true,
+        "start": "1984-01-01",
+        "parameters": [
+          "ALLSKY_KT",
+          "CLOUD_AMT",
+          "T2M",
+          "PRECTOTCORR"
+        ],
+        "period": "D",
+        "release_lag_days": 1,
+        "release_time": "00:00",
+        "release_tz": "America/New_York",
+        "max_staleness_days": 10
+      },
+      "fred": {
+        "enabled": false,
+        "series": [
+          "BAA10Y",
+          "T10YIE"
+        ]
+      }
+    },
+    "http": {
+      "timeout_s": 90.0,
+      "max_retries": 5,
+      "backoff_factor": 1.5,
+      "min_interval_s": 1.0,
+      "cache_ttl_hours": 20.0
+    },
+    "features": {
+      "categories": [
+        "price",
+        "calendar",
+        "macro",
+        "cross_asset",
+        "news",
+        "weather",
+        "astro"
+      ],
+      "winsorize_quantile": 0.005
+    },
+    "targets": {
+      "horizons": [
+        1,
+        5,
+        20
+      ],
+      "downside": {
+        "5": -0.02,
+        "20": -0.05
+      },
+      "large_move": {
+        "horizon": 1.0,
+        "abs_threshold": 0.02
+      },
+      "regime": {
+        "horizon": 20.0,
+        "high_vol_annualized": 0.25,
+        "bull_return": 0.02,
+        "bear_return": -0.02
+      },
+      "vol_horizons": [
+        5,
+        20
+      ]
+    },
+    "validation": {
+      "dev_start": "2015-01-01",
+      "holdout_start": "2022-01-01",
+      "retrain_every_days": 252,
+      "embargo_days": 5,
+      "min_train_obs": 1200,
+      "calibration_fraction": 0.2
+    },
+    "compute": {
+      "n_jobs": 2
+    },
+    "evaluation": {
+      "bootstrap_reps": 500,
+      "bootstrap_block": 20,
+      "alpha": 0.05,
+      "cost_bps_per_turnover": 5.0,
+      "slippage_bps": 2.0
+    },
+    "models": {
+      "classification": [
+        "climatology",
+        "logit",
+        "lgbm",
+        "xgb",
+        "rf"
+      ],
+      "regression": [
+        "hist_mean",
+        "ar1",
+        "ridge",
+        "enet",
+        "lgbm",
+        "xgb",
+        "rf"
+      ],
+      "volatility": [
+        "rw_vol",
+        "har",
+        "garch",
+        "ridge",
+        "lgbm"
+      ],
+      "regime": [
+        "climatology",
+        "logit",
+        "lgbm"
+      ],
+      "ablation_classification": [
+        "logit",
+        "lgbm"
+      ],
+      "ablation_regression": [
+        "ridge",
+        "lgbm"
+      ],
+      "ablation_volatility": [
+        "ridge",
+        "lgbm"
+      ],
+      "params": {
+        "logit": {
+          "C": 0.05,
+          "max_iter": 2000
+        },
+        "ridge": {
+          "alpha": 100.0
+        },
+        "enet": {
+          "alpha": 0.001,
+          "l1_ratio": 0.5,
+          "max_iter": 5000
+        },
+        "lgbm": {
+          "n_estimators": 300,
+          "learning_rate": 0.02,
+          "num_leaves": 15,
+          "min_child_samples": 100,
+          "subsample": 0.8,
+          "subsample_freq": 1,
+          "colsample_bytree": 0.7,
+          "reg_lambda": 5.0,
+          "verbose": -1,
+          "n_jobs": 2
+        },
+        "xgb": {
+          "n_estimators": 300,
+          "learning_rate": 0.02,
+          "max_depth": 3,
+          "min_child_weight": 50,
+          "subsample": 0.8,
+          "colsample_bytree": 0.7,
+          "reg_lambda": 5.0,
+          "n_jobs": 2
+        },
+        "rf": {
+          "n_estimators": 300,
+          "min_samples_leaf": 100,
+          "max_features": 0.3,
+          "n_jobs": 2
+        }
+      },
+      "calibrate": [
+        "lgbm",
+        "xgb",
+        "rf"
+      ],
+      "tuning": {
+        "logit": {
+          "C": [
+            0.001,
+            0.01,
+            0.1,
+            1.0
+          ]
+        },
+        "ridge": {
+          "alpha": [
+            10.0,
+            1000.0,
+            10000.0,
+            100000.0
+          ]
+        },
+        "enet": {
+          "alpha": [
+            0.0001,
+            0.001,
+            0.01
+          ]
+        }
+      }
+    }
+  },
+  "feature_sets": {
+    "price": [
+      "price"
+    ],
+    "price+calendar": [
+      "price",
+      "calendar"
+    ],
+    "price+macro": [
+      "price",
+      "macro"
+    ],
+    "price+cross_asset": [
+      "price",
+      "cross_asset"
+    ],
+    "price+news": [
+      "price",
+      "news"
+    ],
+    "price+weather": [
+      "price",
+      "weather"
+    ],
+    "price+astro": [
+      "price",
+      "astro"
+    ],
+    "calendar_only": [
+      "calendar"
+    ],
+    "astro_only": [
+      "astro"
+    ],
+    "price+calendar+astro": [
+      "price",
+      "calendar",
+      "astro"
+    ],
+    "all": [
+      "price",
+      "calendar",
+      "macro",
+      "cross_asset",
+      "news",
+      "weather",
+      "astro"
+    ]
+  },
+  "tasks": [
+    "direction_1",
+    "direction_5",
+    "direction_20",
+    "return_1",
+    "return_5",
+    "return_20",
+    "volatility_5",
+    "volatility_20",
+    "downside_5",
+    "downside_20",
+    "large_move_1",
+    "regime_20"
+  ]
+}

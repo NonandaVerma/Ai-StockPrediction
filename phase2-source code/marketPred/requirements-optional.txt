@@ -1,0 +1,4 @@
+# Optional components. NOT installed or tested in the reference environment.
+catboost>=1.2        # extra gradient-boosting model (models.factory skips it if missing)
+streamlit>=1.35      # dashboard (not implemented in v1, see docs/REMAINING_WORK.md)
+torch>=2.2           # deep-learning models (deliberately deferred, see report)

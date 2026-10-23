@@ -1,0 +1,88 @@
+# ---------- Market Prediction configuration ----------
+market:
+  ticker: "^NSEI"          # Nifty 50. Use "^BSESN" for Sensex or any yfinance symbol, e.g. "RELIANCE.NS"
+  start: "2000-01-01"
+  end: null                 # null = today
+  synthetic: false          # true = generate fake prices (no internet needed, for testing)
+  synthetic_signal: 0.0     # >0 injects a fake Moon-phase effect (positive control test)
+
+astro:
+  zodiac: "sidereal"        # "sidereal" (Vedic) or "tropical" (Western)
+  ayanamsa: "lahiri"        # lahiri | raman | krishnamurti | fagan_bradley
+  observation_time_utc: 3.75   # 03:45 UTC = 09:15 IST (NSE open)
+  aspect_orb_deg: 6.0
+  ephemeris_path: null      # folder with Swiss Ephemeris .se1 files; null = built-in Moshier ephemeris
+
+target:
+  horizon_days: 1           # predict direction of the next N-day return
+
+selection:
+  enabled: false            # compare "all features" vs "selected features" in the walk-forward
+  max_features: 30          # cap on columns kept per fold
+  corr_threshold: 0.95      # of two features correlated above this, keep only the stronger
+  min_edge: 0.0             # require |univariate AUC - 0.5| above this to be eligible
+  # Selection is refitted inside every training fold (never on the full frame), so the
+  # choice of columns cannot borrow information from the period being scored.
+
+validation:
+  holdout_years: 3          # final untouched test period
+  n_splits: 8               # walk-forward folds inside the development period
+  embargo_days: 5           # gap between train and test to avoid overlap leakage
+  permutations: 30          # circular-shift permutation runs (more = slower, more reliable)
+  fdr_alpha: 0.05           # Benjamini-Hochberg false discovery rate for single-rule tests
+
+backtest:
+  cost_bps: 10              # one-way cost per position change (brokerage + STT + slippage)
+  threshold: 0.55           # go long when predicted P(up) > threshold, else stay in cash
+
+seed: 42
+output_dir: "outputs"
+
+# ---------- Market Prediction dashboard ----------
+database:
+  path: "data/astromarket.db"   # SQLite; schema managed by migrations/*.sql
+
+providers:
+  market: "yahoo"           # yahoo | alphavantage | synthetic
+  timeout_s: 20
+  retries: 3
+  min_interval_s: 0.5       # throttle between API calls (rate-limit protection)
+  # Alpha Vantage needs env var ALPHAVANTAGE_API_KEY (never put keys in this file)
+
+forecast:
+  history_start: "2000-01-01"
+  session_anchor: "open"    # sky is computed at the exchange's session "open" or "close" (local time, DST-aware)
+  node: "mean"              # mean | true lunar node for Rahu/Ketu
+  horizons: [1, 3, 5, 10, 20]
+  # Training recipe shared by every page (src/training.py): Future Forecast, Home, Model Comparison,
+  # Backtesting and Actual vs Predicted all train and score models with exactly these settings.
+  neutral_band: 0.03        # |P(up) - 0.5| below this => "neutral"; also defines "confident calls"
+  folds: 6                  # walk-forward folds used to validate every forecast model
+  min_train_sessions: 500   # fewer usable sessions => forecast unavailable
+  train_window_years: null  # null = all history before the forecast date; N = only the last N years
+  min_move: 0.0             # >0: up/down classifier skips moves smaller than this x expected move
+  # Measured 2026-10-16 on Nifty, Sensex, Reliance, Infosys, AAPL (1 and 5 sessions, 2008-2023):
+  # train_window_years 8 was worse in 26/30 cases; min_move 0.25 and open/high/low features were
+  # within noise; a wider neutral_band raised accuracy in 2008-2023 but not in the last 3 years.
+  min_analogues: 30         # fewer matching historical sessions => evidence "insufficient"
+  analogue_k: 60            # nearest-neighbour analogues per forecast
+  calibration_min_n: 40     # min validated predictions in a probability bucket to report calibrated confidence
+  slippage_bps: 5           # added to backtest.cost_bps per position change
+
+# ---------- Risk pipeline (run_risk_pipeline.py) ----------
+# Pre-registered: these values were fixed BEFORE any risk result was looked at. Changing them after
+# seeing results is a new experiment and must be reported as such.
+risk:
+  horizon: 20                # sessions; targets from the catalog's "Target Labels" sheet
+  holdout_years: 3           # locked final test, scored once
+  min_train_sessions: 1000   # first walk-forward training window (~4 years)
+  test_block: 252            # walk-forward test block (~1 year)
+  permutations: 100          # block permutations per (group, target)
+  permutation_block: 126     # rows per shuffled block (>> horizon, keeps feature persistence)
+  alpha: 0.05                # Holm-adjusted DM p and permutation p for market groups
+  experimental_alpha: 0.01   # stricter bar for experimental (astrology) groups
+  min_year_win_share: 0.6    # candidate must beat base in >= 60% of out-of-sample years
+  data_end: "2026-10-09"     # pinned data vintage (cache files in data/raw/)
+# Round 2 (python run_risk_pipeline.py --round 2): geopolitics (GPR) + weather (NASA POWER), pre-registered
+# 2026-10-16 after round 1 and before any round-2 result. Same thresholds as above, separate Holm family
+# (2 groups x 3 targets). Availability lags: GPR daily d+7, GPR monthly month-end+15d, weather d+5.

@@ -1,0 +1,12 @@
+__pycache__/
+.pytest_cache/
+data/raw/*.csv
+data/raw/external/
+data/processed/*.csv
+outputs/*
+!outputs/.gitkeep
+.venv/
+data/*.db
+data/*.db-wal
+data/*.db-shm
+.ipynb_checkpoints/
